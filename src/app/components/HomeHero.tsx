@@ -10,8 +10,6 @@ import Link from "next/link";
 // import { BsFillPlayFill } from "react-icons/bs";
 // import { AiFillInfoCircle } from "react-icons/ai";
 
-import "./home-hero.scss";
-
 // Definir interfaces para tipado de datos
 interface Movie {
   id: number;
