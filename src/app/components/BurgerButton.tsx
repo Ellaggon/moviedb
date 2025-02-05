@@ -1,6 +1,11 @@
 "use client"
 
-export const BurgerButton = ({clicked, handleClick}) => {
+interface BurgerButtonProps {
+    clicked: boolean;
+    handleClick: () => void;
+}
+
+export const BurgerButton: React.FC<BurgerButtonProps> = ({clicked, handleClick}) => {
     return (
         <div
         onClick={handleClick}
