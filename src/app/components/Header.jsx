@@ -1,8 +1,9 @@
 "use client"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BurgerButton } from "./BurgerButton";
+
 import { useState } from "react";
+import { BurgerButton } from "./BurgerButton";
 
 export const Header = () => {
     const pathname = usePathname()
