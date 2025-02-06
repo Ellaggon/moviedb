@@ -4,7 +4,8 @@ import { usePathname } from "next/navigation";
 
 import { useState } from "react";
 import { BurgerButton } from "./BurgerButton";
-import { SearchInput } from "./SearchInput";
+// import { SearchInput } from "./SearchInput";
+import SearchButton from "./SearchButton";
 
 interface NavItem {
     display: string;
@@ -25,16 +26,17 @@ export const Header = () => {
     const activeIndex = headerNav.findIndex(e => e.path === pathname)
 
     const [ isBurgerOpen, setIsBurgerOpen ] = useState(false)
+    const [ isSearchOpen, setIsSearchOpen ] = useState(false)
 
     return (
         <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 bg-opacity-25 backdrop-blur-md border-b border-white/20">
             <div className="container flex items-center justify-between h-16 px-4 md:px-6">
                 {/* burger button */}
-                <div className="md:hidden">
+                <div className="md:hidden mt-2">
                     <BurgerButton clicked={isBurgerOpen} handleClick={() => setIsBurgerOpen(!isBurgerOpen)} />
                 </div>
 
-                <h1 className={`text-2xl font-bold text-main md:text-4xl`}>
+                <h1 className={`fixed right-[35%] text-2xl font-bold md:text-4xl transition-all ${isSearchOpen? "hidden" : "flex"}`} >
                     <Link href="/">MOVIEAPP</Link>
                 </h1>
 
@@ -51,8 +53,8 @@ export const Header = () => {
                     </ul>
                 </nav>
 
-                <div>
-                <SearchInput />
+                <div className="block md:hidden">
+                    <SearchButton clicked={isSearchOpen} handleClick={() => setIsSearchOpen(!isSearchOpen)} />
                 </div>
             </div>
         </header>
