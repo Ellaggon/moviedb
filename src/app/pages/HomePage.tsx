@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import HomeHero from '../components/HomeHero';
+import HomeHero from '../components/home/HomeHero';
 
 function HomePage() {
   const [t] = useTranslation("global");
