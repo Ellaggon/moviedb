@@ -8,6 +8,10 @@
       "DOM.Iterable",
       "ESNext"
     ], /* Specify what module code is generated. *//* JavaScript Support */
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/app/*"]
+    },
     "allowJs": true, /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. *//* Emit */
     "noEmit": true, /* Disable emitting files from a compilation. *//* Interop Constraints */
     "isolatedModules": true, /* Ensure that each file can be safely transpiled without relying on other imports. */
