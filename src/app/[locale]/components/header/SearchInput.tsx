@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { BiSearch } from "react-icons/bi";
@@ -7,6 +8,7 @@ import { BiSearch } from "react-icons/bi";
 export default function SearchInput() {
     const inputRef = useRef<HTMLInputElement | null>(null)
     const router = useRouter()
+    const t = useTranslations("lang")
 
     const [text, setText] = useState("")
     const [error, setError] = useState(false)
@@ -41,7 +43,7 @@ export default function SearchInput() {
                     type="text"
                     value={text}
                     onChange={onChange}
-                    placeholder="Search"
+                    placeholder={`${t("search")}`}
                     className="w-[110px] bg-transparent rounded-lg outline-none text-sm tracking-wide placeholder-white" />
                 <button 
                     type="submit" 

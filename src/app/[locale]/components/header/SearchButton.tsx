@@ -3,7 +3,6 @@
 import { useRef, useState } from "react";
 import { BiSearch } from "react-icons/bi"
 import { useRouter } from "next/navigation";
-import { encode } from "punycode";
 
 export default function SearchButton({ clicked, handleClick }: { clicked: boolean; handleClick: () => void }) {
   const inputRef = useRef<HTMLInputElement>(null)

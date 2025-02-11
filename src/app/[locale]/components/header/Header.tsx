@@ -3,23 +3,23 @@
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BurgerButton } from "./BurgerButton";
-import Link from "next/link";
+import { Link } from 'src/i18n/routing';
+import { useTranslations } from "use-intl";
 import SearchButton from "./SearchButton";
 import SearchInput from "./SearchInput";
+import LanguageToggle from "./LanguageToggle";
 
-// import { useTranslation } from "react-i18next";
-// import LanguageToggle from "../language-toggle/LanguageToggle";
 
 export default function Header() {
     const pathname = usePathname();
-    //   const { t } = useTranslation("global");
+    const t = useTranslations("lang")
 
     const headerNav = [
-        { display: "home", path: "/" },
-        { display: "trending", path: "/trending" },
-        { display: "categories", path: "/categories" },
-        { display: "popular", path: "/popular" },
-        { display: "upcoming", path: "/upcoming" },
+        { display: `${t("home")}`, path: "/" },
+        { display: `${t("trending")}`, path: "/trending" },
+        { display: `${t("categories")}`, path: "/categories" },
+        { display: `${t("popular")}`, path: "/popular" },
+        { display: `${t("upcoming")}`, path: "/upcoming" },
     ];
 
     const active = headerNav.findIndex((e) => e.path === pathname);
@@ -60,12 +60,17 @@ export default function Header() {
                             {e.display}
                         </Link>
                     ))}
+                    <div className="md:hidden">
+                        <LanguageToggle />
+                    </div>
                     <div className="w-full h-16"></div>
                 </li>
 
                 {/* config controls */}
                 <li className="flex items-center gap-3">
-                    {/* <LanguageToggle clickedBurger={clickedBurger} /> */}
+                    <div className="hidden md:block">
+                        <LanguageToggle /> 
+                    </div>
                     <SearchInput />
                 </li>
 
