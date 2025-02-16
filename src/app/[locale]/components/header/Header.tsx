@@ -1,10 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { BurgerButton } from "./BurgerButton";
-import { Link } from 'src/i18n/routing';
 import { useTranslations } from "use-intl";
+import { useState } from "react";
+
+import { BurgerButton } from "./BurgerButton";
 import SearchButton from "./SearchButton";
 import SearchInput from "./SearchInput";
 import LanguageToggle from "./LanguageToggle";
