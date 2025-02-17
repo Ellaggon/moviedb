@@ -1,12 +1,15 @@
 
 // import apiConfig from "src/api/apiConfig"
 // import { axiosClient } from "src/api/axiosClient"
+import { getTranslations } from "next-intl/server"
 import MovieCard from "./MovieCard"
 import { tmdbApi } from "src/api/tmdbApi"
 
-const fetchMovies = async (category: string, id?: number, lang?: string) => {
+const fetchMovies = async (category: string, id?: number) => {
     try {
         let res = null
+        const t = await getTranslations("lang")
+        const lang = t("lang")
         const params = {language: lang || "es"}
 
         if(category !== "similar"){
@@ -41,10 +44,13 @@ type MoviesProps = {
     lang?: string
 }
 
-export default async function MovieSwipe({category, id, lang}: MoviesProps) {
+export default async function MovieSwipe({category, id}: MoviesProps) {
     // const { data } = await axiosClient("trending/movie/day")
     // const movies: MoviesProps[] = data.results
-    const movies = await fetchMovies(category, id, lang)
+    const movies = await fetchMovies(category, id)
+    const t = await getTranslations("lang")
+        const name = t("lang")
+        console.log(name)
 
     return (
         <section>
