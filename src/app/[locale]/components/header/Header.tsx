@@ -54,7 +54,7 @@ export default function Header() {
                     {headerNav.map((e, i) => (
                         <Link
                             key={i}
-                            href={e.path}
+                            href={`/${t("lang")}${e.path}`}
                             className={`text-white text-sm md:text-lg transition ${i === active ? "border-b-2 border-red-500" : "hover:border-b-2 hover:border-white"
                                 }`}
                         >
