@@ -29,7 +29,8 @@ export default function Header() {
     const [clickedSearcher, setClickedSearcher] = useState(false);
 
     return (
-        <header className="fixed relative top-0 left-0 w-full bg-black/30 backdrop-blur-md border-b border-white/20 z-50">
+        <header className="fixed relative flex justify-center top-0 left-0 w-full bg-black/30 backdrop-blur-md border-b border-white/20 z-50">
+            {/* <div className="absolute inset-0 bg-black/50 backdrop-blur-md"></div> */}
             <ul className="flex container items-center justify-between h-16 px-5">
 
                 {/* burger button */}
@@ -57,6 +58,7 @@ export default function Header() {
                             href={`/${t("lang")}${e.path}`}
                             className={`text-white text-sm md:text-lg transition ${i === active ? "border-b-2 border-red-500" : "hover:border-b-2 hover:border-white"
                                 }`}
+                            onClick={() => setClickedBurger(false)}
                         >
                             {e.display}
                         </Link>
