@@ -1,14 +1,16 @@
 import { axiosClient } from "./axiosClient"
 
-
 export const movieType = {
     upcoming: "upcoming",
     popular: "popular"
 }
 type MovieType = keyof typeof movieType
-
-export interface apiParams {
+interface apiParams {
     [key: string]: string | number | boolean | undefined
+}
+interface categoryParams {
+    page?: number,
+    language?: string
 }
 
 export const tmdbApi = {
@@ -20,6 +22,10 @@ export const tmdbApi = {
         const url = "trending/movie/day"
         return axiosClient.get(url,{params})
     },
+    getVideo: (id: number, params: apiParams ) => {
+        const url = `movie/${id}/videos`
+        return axiosClient.get(url, { params })
+    },
     similar: (id: number, params: apiParams) => {
         const url = `movie/${id}/similar`
         return axiosClient.get(url, {params})
@@ -28,8 +34,8 @@ export const tmdbApi = {
         const url = "genre/movie/list"
         return axiosClient.get(url, { params })
     },
-    getMoviesByCategory: (id: number, params: apiParams) => {
-        const url = "discover/movies"
-        return axiosClient.get(url, {params: {...params, with_genre: id}})
+    getMoviesByCategory: (genres: number[], params: categoryParams) => {
+        const url = "discover/movie"
+        return axiosClient.get(url, {params: {...params, with_genres: genres.join(",")}})
     }
 }
