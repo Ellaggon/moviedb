@@ -1,9 +1,18 @@
+import { getTranslations } from "next-intl/server";
+import MovieGrid from "../components/MovieGrid";
 
 
-export default function trending() {
+export default async function trending() {
+    const t = await getTranslations("lang")
+
     return (
         <div className="bg-black w-100">
-            <div>hello</div>
+            <h1 className="text-white text-3xl font-bold text-center py-6">
+                {
+                    t("trendingMovies")
+                }
+            </h1>
+            <MovieGrid category="trending"/>
         </div>
     )
 }
