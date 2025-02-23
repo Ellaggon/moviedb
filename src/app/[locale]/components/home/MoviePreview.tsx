@@ -1,6 +1,6 @@
 import Link from "next/link"
-import MovieSwipe from "./MoviesSwipe"
-import { OutlineButton } from "../button"
+import MovieSwipe from "./MovieList"
+import { OutlineButton } from "./SeeAllButton"
 import { getTranslations } from "next-intl/server"
 
 interface MoviePreviewProps {
