@@ -1,37 +1,17 @@
-
-import MovieCard from "../components/home/MovieCard"
-import { getGenres } from "../lib/getGenres"
-import { getTranslations } from "next-intl/server"
+import { tmdbApi } from "src/api/tmdbApi"
 import { GenreFilter } from "../components/categories/GenreFilter"
-
-export type Movie = {
-    id: number,
-    psoter_path: string,
-    title: string,
-    overview: string
-}
-export type Genre = {}
+import { getTranslations } from "next-intl/server"
 
 export default async function categories () {
-    // const res = await getMoviesByCategory()
     const t = await getTranslations("lang")
-    
-    const genres = await getGenres(t("langAPI"))
+    const params = { language: `${t("langAPI")}` }
+
+    const res = await tmdbApi.genres(params)
+    const genres = res.data?.genres ?? []
 
     return (
-        <section className="container mx-auto py-6 flex justify-center">
+        <main>
             <GenreFilter genres={genres}/>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {/* {
-                    movies.map((movie: Movie)=>(
-                        <MovieCard key={movie.id} item={movie}/>
-                    ))
-                } */}
-            </div>
-            <div>
-                <button>
-                </button>
-            </div>
-        </section>
+        </main>
     )
 }
