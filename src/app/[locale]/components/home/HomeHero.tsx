@@ -5,11 +5,13 @@ import { tmdbApi } from "src/api/tmdbApi"
 import { AiFillInfoCircle } from "react-icons/ai"
 import { BsFillPlayFill } from "react-icons/bs"
 import { useTranslations } from "next-intl"
+import { TrailerModal } from "../TrailerModal"
 
 
 export default function HomeHero() {
   const t = useTranslations("lang")
   const [ movieItem, setMovieItem ] = useState(null)
+  const [ playTrailer, setPlayTrailer ] = useState(false)
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -18,7 +20,6 @@ export default function HomeHero() {
         const res = await tmdbApi.getMovieList("popular", params)
         const randomIndex = Math.floor(Math.random() * res.data.results.length)
         const randomMovie = res.data.results[randomIndex]
-        console.log(res)
         setMovieItem(randomMovie)
       } catch (e) {
         console.error("Error fetch movie: ", e)
@@ -28,10 +29,12 @@ export default function HomeHero() {
   }, [t])
     return (
         <section className="relative bg-black h-screen w-100">
-          <HomeHeroItem item={movieItem}/>
+          <HomeHeroItem item={movieItem} setPlayTrailer={setPlayTrailer}/>
+          { playTrailer && <TrailerModal item={movieItem} playTrailer={playTrailer} setPlayTrailer={setPlayTrailer}/>}
         </section>
     )
 }
+
 
 interface itemProps {
   title: string,
@@ -43,7 +46,12 @@ interface itemProps {
   runtime: number,
 }
 
-function HomeHeroItem ({item}: {item: itemProps | null}) {
+interface HomeHeroItemProps {
+  item: itemProps | null,
+  setPlayTrailer: (value: boolean) => void
+}
+
+function HomeHeroItem ({item, setPlayTrailer}: HomeHeroItemProps ) {
   const t = useTranslations("lang")
 
   if (!item) return null
@@ -57,14 +65,14 @@ function HomeHeroItem ({item}: {item: itemProps | null}) {
 
             <div className="absolute bottom-24 md:left-20 xl:left-64 z-10 max-w-2xl text-left p-8">
               <div className="flex items-center gap-3 text-lg">
-                <span className="text-yellow-400 text-2xl">★{item.vote_average}</span>
+                <span className="text-yellow-400 text-2xl">★{item.vote_average.toFixed(1)}</span>
                 <span className="">• {item.runtime}</span>
                 <span className="bg-red-600 px-2 py-1 rounded shadow-lg shadow-red-500/50">{t("popular")}</span>
               </div>
               <h2 className="text-4xl font-bold my-6">{item.title}</h2>
               <p className="text-lg mb-4 line-clamp-3 xl:font-semibold hidden md:flex">{item.overview}</p>
               <div className="flex gap-4">
-                <button className="flex items-center px-4 py-2 bg-red-700 hover:bg-red-800 rounded-lg text-white text-sm font-semibold">
+                <button className="flex items-center px-4 py-2 bg-red-700 hover:bg-red-800 rounded-lg text-white text-sm font-semibold" onClick={() => setPlayTrailer(true)}>
                   <BsFillPlayFill className="text-xl mr-1"/>
                   {t("playTrailer")}
                 </button>

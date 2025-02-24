@@ -22,7 +22,7 @@ export const tmdbApi = {
         const url = "trending/movie/day"
         return axiosClient.get(url,{params})
     },
-    getVideo: (id: number, params: apiParams ) => {
+    getVideos: (id: number, params: apiParams ) => {
         const url = `movie/${id}/videos`
         return axiosClient.get(url, { params })
     },
