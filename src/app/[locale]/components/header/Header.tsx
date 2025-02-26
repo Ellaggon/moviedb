@@ -29,12 +29,13 @@ export default function Header() {
     const [clickedSearcher, setClickedSearcher] = useState(false);
 
     return (
-        <header className="fixed relative flex justify-center top-0 left-0 w-full bg-black/30 backdrop-blur-md border-b border-white/20 z-50">
-            {/* <div className="absolute inset-0 bg-black/50 backdrop-blur-md"></div> */}
+        <>
+        <div className={`absolute inset-0 backdrop-blur-sm transform ${clickedBurger === true ? "h-100 z-20" : "hidden"}`}></div>
+        <header className="sticky relative flex justify-center top-0 left-0 w-full z-50 bg-black bg-opacity-90">
             <ul className="flex container items-center justify-between h-16 px-5">
 
                 {/* burger button */}
-                <li className="block md:hidden">
+                <li className="block lg:hidden">
                     <BurgerButton
                         clicked={clickedBurger}
                         handleClick={() => setClickedBurger(!clickedBurger)} />
@@ -42,14 +43,14 @@ export default function Header() {
 
                 {/* Títle */}
                 <li className={`${clickedSearcher ? "hidden md:block" : ""}`}>
-                    <Link href="/" className="text-xl ml-6 font-bold text-red-500">
+                    <Link href="/" className="text-xl font-bold text-red-500">
                         MOVIEAPP
                     </Link>
                 </li>
 
                 {/* navigation menu */}
                 <li
-                    className={`absolute md:static md:z-50 top-16 left-0 w-full md:w-auto bg-black md:bg-transparent p-5 md:p-0 flex flex-col md:flex-row items-center gap-5 transition-all -z-10 ${clickedBurger ? "translate-y-0" : "-translate-y-full md:translate-y-0"
+                    className={`absolute lg:static top-20 left-0 w-full lg:w-auto lg:bg-transparent p-5 lg:p-0 flex flex-col lg:flex-row items-center gap-6 transition-all -z-10 md:font-semibold ${clickedBurger ? "translate-y-0" : "-translate-y-full lg:translate-y-0"
                         }`}
                 >
                     {headerNav.map((e, i) => (
@@ -63,27 +64,28 @@ export default function Header() {
                             {e.display}
                         </Link>
                     ))}
-                    <div className="md:hidden">
+                    <div className="lg:hidden">
                         <LanguageToggle />
                     </div>
                     <div className="w-full h-16"></div>
                 </li>
 
                 {/* config controls */}
-                <li className="flex items-center gap-3">
-                    <div className="hidden md:block">
+                <li className="flex items-center gap-3 hidden lg:flex">
+                    <div className="hidden lg:block">
                         <LanguageToggle /> 
                     </div>
                     <SearchInput />
                 </li>
 
                 {/* Search button */}
-                <li className="block md:hidden">
+                <li className="block lg:hidden">
                     <SearchButton
                         clicked={clickedSearcher}
                         handleClick={() => setClickedSearcher(!clickedSearcher)} />
                 </li>
             </ul>
         </header>
+        </>
     );
 }

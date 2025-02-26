@@ -36,7 +36,7 @@ export default function SearchInput() {
         setText("")
     }
     return (
-        <article className={`hidden md:flex items-center p-2 inputs border-2 rounded-lg ${error ? "border-red-500" : "border-gray-700"}`}>
+        <article className={`hidden lg:flex items-center p-2 inputs border-2 rounded-lg ${error ? "border-red-500" : "border-gray-700"}`}>
             <form className="flex items-center gap-2 w-full" onSubmit={onSubmit}>
                 <input
                     ref={inputRef}
