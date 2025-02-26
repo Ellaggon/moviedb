@@ -21,10 +21,10 @@ export const TrailerModal = ({ item, playTrailer, setPlayTrailer }: TrailerModal
                 const params = { language: "en-US" }
                 const res = await tmdbApi.getVideos(item.id, params)
 
-                if(res.data.results.length > 0){
+                if (res.data.results.length > 0) {
                     const trailer = res.data.results
-                    .find((el: {name: string, key: string}) => ["official trailer", "trailer oficial", "tráiler oficial"]
-                    .some(keyword => el.name.toLowerCase().includes(keyword)))
+                        .find((el: { name: string, key: string }) => ["official trailer", "trailer oficial", "tráiler oficial"]
+                        .some(keyword => el.name.toLowerCase().includes(keyword)))
 
                     const key = trailer ? trailer.key : res.data.results[0]?.key
                     setTrailerKey(key)
@@ -44,8 +44,8 @@ export const TrailerModal = ({ item, playTrailer, setPlayTrailer }: TrailerModal
             className={`fixed inset-0 bg-black bg-opacity-80 z-50 flex justify-center items-center ${playTrailer ? "opacity-100" : "opcaity-0"}`}
             onClick={() => setPlayTrailer(false)}>
 
-            <div 
-                className="realtive w-[90%] h-[80%] flex items-center justify-center bg-black"
+            <div
+                className="fixed w-[90%] max-w-[1450px] h-[80%] flex items-center justify-center bg-black rounded-lg"
                 onClick={(e) => e.stopPropagation()}>
                 {
                     trailerKey ? (
@@ -61,7 +61,7 @@ export const TrailerModal = ({ item, playTrailer, setPlayTrailer }: TrailerModal
                         <div className="text-white text-center text-xl">{t("noTrailer")}</div>
                     )
                 }
-                <button className="absolute top-4 right-4 text-white bg-gray-800 p-2 rounded-full hover:bg-red-700 hover:text-white transition">
+                <button className="absolute top-[-20px] right-[-20px] text-white p-2 rounded-full border-2 hover:bg-white hover:text-black transition shadow-lg hover:shadow-red-100/50">
                     <MdClose className="w-6 h-6" onClick={() => setPlayTrailer(false)} />
                 </button>
             </div>
