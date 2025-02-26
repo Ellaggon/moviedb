@@ -30,7 +30,7 @@ export default function Header() {
 
     return (
         <>
-        <div className={`absolute inset-0 backdrop-blur-sm transform ${clickedBurger === true ? "h-100 z-20" : "hidden"}`}></div>
+        <div className={`absolute inset-0 bg-black/40 backdrop-blur-sm transform ${clickedBurger === true ? "h-100 z-20" : "hidden"}`}></div>
         <header className="sticky relative flex justify-center top-0 left-0 w-full z-50 bg-black bg-opacity-90">
             <ul className="flex container items-center justify-between h-16 px-5">
 
