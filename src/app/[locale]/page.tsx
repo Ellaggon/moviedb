@@ -1,7 +1,7 @@
 
 import { getTranslations } from "next-intl/server";
-import HomeHero from "./components/home/HomeHero";
-import {MoviePreview} from "./components/home/MoviePreview";
+import HomeHero from "../components/home/HomeHero";
+import {MoviePreview} from "../components/home/MoviePreview";
 
 export default async function home() {
   const t = await getTranslations("lang")

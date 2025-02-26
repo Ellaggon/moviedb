@@ -1,5 +1,5 @@
 import { tmdbApi } from "src/api/tmdbApi"
-import { GenreFilter } from "../components/categories/GenreFilter"
+import { GenreFilter } from "../../components/categories/GenreFilter"
 import { getTranslations } from "next-intl/server"
 
 export default async function categories () {

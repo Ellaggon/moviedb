@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import MovieGrid from "../components/MovieGrid";
+import MovieGrid from "../../components/MovieGrid";
 
 
 export default async function trending() {

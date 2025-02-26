@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/[locale]/components/header/Header";
+import Header from "@/components/header/Header";
 import { notFound } from "next/navigation";
 import { routing } from "src/i18n/routing";
 import { getMessages } from "next-intl/server";
