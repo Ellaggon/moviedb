@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server"
-import MovieCard from "../MovieCard"
+import MovieCard from "./MovieCard"
 import { tmdbApi } from "src/api/tmdbApi"
 
 
@@ -43,7 +43,7 @@ type MoviesProps = {
     lang?: string
 }
 
-export default async function MovieSwipe({category, id}: MoviesProps) {
+export default async function MovieList({category, id}: MoviesProps) {
     const movies = await fetchMovies(category, id)
 
     return (
