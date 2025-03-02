@@ -21,6 +21,8 @@
       "allRightsReserved": "All rights reserved",
       "seeAll": "See All",
       "noResult": "There aren't results",
-      "noTrailer": "There aren't trailers in this language"
+      "noTrailer": "There aren't trailers in this language",
+      "noOverview": "There aren`t overview in this language",
+      "movieNotFound": "Movie not found"
     }
   }
