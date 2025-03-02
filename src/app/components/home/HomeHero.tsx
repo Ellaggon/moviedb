@@ -6,6 +6,7 @@ import { AiFillInfoCircle } from "react-icons/ai"
 import { BsFillPlayFill } from "react-icons/bs"
 import { useTranslations } from "next-intl"
 import { TrailerModal } from "../TrailerModal"
+import Link from "next/link"
 
 
 export default function HomeHero() {
@@ -37,6 +38,7 @@ export default function HomeHero() {
 
 
 interface itemProps {
+  id: string,
   title: string,
   overview: string,
   popularity: number,
@@ -56,6 +58,7 @@ function HomeHeroItem ({item, setPlayTrailer}: HomeHeroItemProps ) {
 
   if (!item) return null
   const bg = apiConfig.originalImage(item?.backdrop_path || item?.poster_path)
+  const link = `/${t("lang")}/movie/${item.id}`
 
     return (
         <article className="relative h-full text-white">
@@ -76,10 +79,12 @@ function HomeHeroItem ({item, setPlayTrailer}: HomeHeroItemProps ) {
                   <BsFillPlayFill className="text-xl mr-1"/>
                   {t("playTrailer")}
                 </button>
+                <Link href={link}>
                 <button className="flex items-center px-4 py-2 hover:bg-gray-900 rounded-lg text-sm font-semibold">
                   <AiFillInfoCircle  className="text-xl mr-1"/>
                   {t("details")}
                 </button>
+                </Link>
               </div>
             </div>
         </article>
