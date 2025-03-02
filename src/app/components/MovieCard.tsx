@@ -3,6 +3,7 @@
 import Link from "next/link"
 import apiConfig from "src/api/apiConfig"
 import {BsFillCollectionPlayFill} from "react-icons/bs"
+import { useTranslations } from "use-intl"
 
 interface MovieCardProps {
     id: number,
@@ -16,7 +17,8 @@ interface itemMovie {
 }
 
 export default function MovieCard({ item }: itemMovie) {
-    const link = `/movie/${item.id}`
+    const t = useTranslations("lang")
+    const link = `/${t("lang")}/movie/${item.id}`
     const bg = apiConfig.w500Image(item.poster_path || item.backdrop_path || "")
     return (
         <>
