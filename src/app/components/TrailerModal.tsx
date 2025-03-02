@@ -1,6 +1,5 @@
 "use client"
-import { on } from "events"
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { MdClose } from "react-icons/md"
 import { tmdbApi } from "src/api/tmdbApi"
 import { useTranslations } from "use-intl"
