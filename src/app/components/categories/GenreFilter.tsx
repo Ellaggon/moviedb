@@ -21,20 +21,20 @@ export const GenreFilter: React.FC<GenreFilterProps> = ({ genres }) => {
     }
 
     return (
-        <div className="container mx-auto py-6 flex flex-col justify-center">
-            <section className="flex gap-2 overflow-x-auto pb-6 mb-8 ml-6">
+        <div className="container mx-auto py-6 flex flex-col justify-center max-w-[1000px]">
+            <section className="flex gap-2 overflow-x-auto pb-6 mb-8 mx-3">
                 {
                     genres.map((el) => (
                         <button
-                            key={ el.id }
-                            className={`px-4 py-2 rounded-md text-white text-sm hover:scale-95 transition-all ease-in-out duration-500 ${selectedGenres.includes(el.id) ? "bg-red-700" : "bg-gray-700"}`}
+                            key={el.id}
+                            className={`px-4 py-2 rounded-md text-white text-sm hover:scale-95 transition-all ease-in-out duration-500 ${selectedGenres.includes(el.id) ? "bg-red-700" : "bg-blue-900"}`}
                             onClick={() => handleSelectedClick(el.id)}>
-                            { el.name }
+                            {el.name}
                         </button>
                     ))
                 }
             </section>
-            <GenreMovies selectedGenres={selectedGenres}/>
+            <GenreMovies selectedGenres={selectedGenres} />
         </div>
     )
 }
