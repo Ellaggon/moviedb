@@ -17,7 +17,7 @@ export const TrailerModal = ({ item, playTrailer, setPlayTrailer }: TrailerModal
     useEffect(() => {
         const getVideo = async () => {
             try {
-                const params = { language: "en-US" }
+                const params = { language: t("lang") }
                 const res = await tmdbApi.getVideos(item.id, params)
 
                 if (res.data.results.length > 0) {
@@ -60,7 +60,7 @@ export const TrailerModal = ({ item, playTrailer, setPlayTrailer }: TrailerModal
                         <div className="text-white text-center text-xl">{t("noTrailer")}</div>
                     )
                 }
-                <button className="absolute top-[-20px] right-[-20px] text-white p-2 rounded-full border-2 hover:bg-white hover:text-black transition shadow-lg hover:shadow-red-100/50">
+                <button className="absolute bottom-[-20px] right-[-20px] text-white p-2 rounded-full border-2 hover:bg-white hover:text-black transition shadow-lg hover:shadow-red-100/50">
                     <MdClose className="w-6 h-6" onClick={() => setPlayTrailer(false)} />
                 </button>
             </div>
