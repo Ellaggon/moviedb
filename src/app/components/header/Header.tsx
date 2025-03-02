@@ -23,7 +23,7 @@ export default function Header() {
         { display: `${t("upcoming")}`, path: "/upcoming" },
     ];
 
-    const active = headerNav.findIndex((e) => e.path === pathname);
+    const active = headerNav.findIndex((e) => `/${t("lang")}${e.path}` === pathname);
 
     const [clickedBurger, setClickedBurger] = useState(false);
     const [clickedSearcher, setClickedSearcher] = useState(false);
@@ -31,7 +31,7 @@ export default function Header() {
     return (
         <>
         <div className={`absolute inset-0 bg-black/40 backdrop-blur-sm transform ${clickedBurger === true ? "h-100 z-20" : "hidden"}`}></div>
-        <header className="sticky relative flex justify-center top-0 left-0 w-full z-50 bg-black bg-opacity-90">
+        <header className="sticky relative flex justify-center top-0 left-0 w-full z-20 bg-black bg-opacity-80">
             <ul className="flex container items-center justify-between h-16 px-5">
 
                 {/* burger button */}
@@ -50,15 +50,14 @@ export default function Header() {
 
                 {/* navigation menu */}
                 <li
-                    className={`absolute lg:static top-20 left-0 w-full lg:w-auto lg:bg-transparent p-5 lg:p-0 flex flex-col lg:flex-row items-center gap-6 transition-all -z-10 md:font-semibold ${clickedBurger ? "translate-y-0" : "-translate-y-full lg:translate-y-0"
+                    className={`absolute lg:sticky top-20 left-0 w-full lg:w-auto lg:bg-transparent p-5 lg:p-0 flex flex-col lg:flex-row items-center gap-6 transition-all -z-10 lg:z-0 ${clickedBurger ? "translate-y-0" : "-translate-y-full lg:translate-y-0"
                         }`}
                 >
                     {headerNav.map((e, i) => (
                         <Link
                             key={i}
                             href={`/${t("lang")}${e.path}`}
-                            className={`text-white text-sm md:text-lg transition ${i === active ? "border-b-2 border-red-500" : "hover:border-b-2 hover:border-white"
-                                }`}
+                            className={`text-white text-sm transition-transform duration-500 pt-2 ${i === active ? "lg:border-t-2 lg:border-red-500" : "hover:border-t-2 hover:border-white"}`}
                             onClick={() => setClickedBurger(false)}
                         >
                             {e.display}
