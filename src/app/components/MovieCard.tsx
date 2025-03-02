@@ -21,7 +21,6 @@ export default function MovieCard({ item }: itemMovie) {
     const link = `/${t("lang")}/movie/${item.id}`
     const bg = apiConfig.w500Image(item.poster_path || item.backdrop_path || "")
     return (
-        <>
         <Link href={link} className="block mb-2">
             <div style={{ backgroundImage: `url(${bg})`}}
                 className="relative w-40 h-60 md:w-56 md:h-80 bg-cover bg-center rounded-lg transition-transform hover:scale-105">
@@ -33,6 +32,5 @@ export default function MovieCard({ item }: itemMovie) {
                 {item.title || item.name}
             </h3>
         </Link>
-        </>
     )
 }
