@@ -1,7 +1,7 @@
 import Link from "next/link"
-import MovieSwipe from "./MovieList"
 import { OutlineButton } from "./SeeAllButton"
 import { getTranslations } from "next-intl/server"
+import MovieList from "../MovieList"
 
 interface MoviePreviewProps {
     title: string,
@@ -27,7 +27,7 @@ export async function MoviePreview({ title, category, redirect, id }: MoviePrevi
                         )
                     }
                 </div>
-                <MovieSwipe category={category} id={id ?? 0} />
+                <MovieList category={category} id={id ?? 0} />
             </div>
         </section>
     )
