@@ -30,6 +30,10 @@ export const tmdbApi = {
         const url = `movie/${id}`
         return axiosClient.get(url, { params })
     },
+    search: (name: string, params: apiParams) => {
+        const url = `search/name=${ name }`
+        return axiosClient.get(url, { params })
+    },
     similar: (id: number, params: apiParams) => {
         const url = `movie/${id}/similar`
         return axiosClient.get(url, {params})
