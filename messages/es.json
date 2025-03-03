@@ -23,6 +23,8 @@
       "noResult": "No hay resultados",
       "noTrailer": "No se encontraron trailers en este idioma",
       "noOverview": "No se encontro una descripción general en este idioma",
-      "movieNotFound": "Pelicula no encontrada"
+      "movieNotFound": "Pelicula no encontrada",
+      "country": "País de origen",
+      "company": "Empresa de producción"
     }
   }

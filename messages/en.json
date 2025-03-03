@@ -23,6 +23,8 @@
       "noResult": "There aren't results",
       "noTrailer": "There aren't trailers in this language",
       "noOverview": "There aren`t overview in this language",
-      "movieNotFound": "Movie not found"
+      "movieNotFound": "Movie not found",
+      "country": "Origin country",
+      "company": "Production company"
     }
   }
