@@ -31,7 +31,7 @@ export default function SearchInput() {
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         if(validate(text)) {
-            router.push(`/search/name=${encodeURIComponent(text)}`)
+            router.push(`/${t("lang")}/search?name=${encodeURIComponent(text)}`)
         }
         setText("")
     }
