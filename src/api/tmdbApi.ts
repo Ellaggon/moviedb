@@ -6,7 +6,7 @@ export const movieType = {
 }
 type MovieType = keyof typeof movieType
 interface apiParams {
-    [key: string]: string | number | boolean | undefined
+    [key: string]: string | string[] | number | boolean | undefined
 }
 interface categoryParams {
     page?: number,
@@ -15,12 +15,12 @@ interface categoryParams {
 
 export const tmdbApi = {
     getMovieList : (type: MovieType, params: apiParams) => {
-        const url = `movie/${movieType[type]}`
-        return axiosClient.get(url, {params})
+        const url = `movie/${ movieType[type] }`
+        return axiosClient.get(url, { params })
     },
     getTrendingMoviesList: (params: apiParams) => {
         const url = "trending/movie/day"
-        return axiosClient.get(url,{params})
+        return axiosClient.get(url,{ params })
     },
     getVideos: (id: number, params: apiParams ) => {
         const url = `movie/${id}/videos`
@@ -30,8 +30,8 @@ export const tmdbApi = {
         const url = `movie/${id}`
         return axiosClient.get(url, { params })
     },
-    search: (name: string, params: apiParams) => {
-        const url = `search/name=${ name }`
+    search: (params: apiParams) => {
+        const url = `search/movie`
         return axiosClient.get(url, { params })
     },
     similar: (id: number, params: apiParams) => {
