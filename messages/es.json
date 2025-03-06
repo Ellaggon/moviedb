@@ -18,13 +18,13 @@
       "upcomingMovies": "Próximas películas",
       "similarMovies": "Películas Similares",
       "released": "Publicado en",
-      "allRightsReserved": "Todos los derechos reservados",
       "seeAll": "Ver todas",
       "noResult": "No hay resultados",
       "noTrailer": "No se encontraron trailers en este idioma",
       "noOverview": "No se encontro una descripción general en este idioma",
       "movieNotFound": "Pelicula no encontrada",
       "country": "País de origen",
-      "company": "Empresa de producción"
+      "company": "Empresa de producción",
+      "footer": "Casi todos los derechos reservados"
     }
   }

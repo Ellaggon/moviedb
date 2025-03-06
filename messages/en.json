@@ -18,13 +18,13 @@
       "upcomingMovies": "Upcoming Movies",
       "similarMovies": "Similar Movies",
       "released": "Released",
-      "allRightsReserved": "All rights reserved",
       "seeAll": "See All",
       "noResult": "There aren't results",
       "noTrailer": "There aren't trailers in this language",
       "noOverview": "There aren`t overview in this language",
       "movieNotFound": "Movie not found",
       "country": "Origin country",
-      "company": "Production company"
+      "company": "Production company",
+      "footer": "Almost all rights reserved"
     }
   }
