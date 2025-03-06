@@ -1,11 +1,15 @@
 import { getTranslations } from "next-intl/server";
 import MovieGrid from "../../components/MovieGrid";
 import { GoBackButton } from "@/components/GoBackButton";
+import { SearchParams } from "src/types/movieTypes";
 
-export default async function popular() {
+
+export default async function popular({searchParams}: SearchParams) {
     const t = await getTranslations("lang")
+    const currentPage = Number((await searchParams).page) || 1
+
     return (
-        <div className="w-100 relative">
+        <main className="w-100 relative">
             <div className="absolute top-4 right-4 md:top-10 2xl:right-96 2xl:top-20">
                 <GoBackButton />
             </div>
@@ -14,7 +18,7 @@ export default async function popular() {
                     t("popularMovies")
                 }
             </h1>
-            <MovieGrid category="popular" />
-        </div>
+            <MovieGrid category="popular" currentPage={currentPage}/>
+        </main>
     )
 }
