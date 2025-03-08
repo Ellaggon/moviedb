@@ -25,7 +25,7 @@ export default async function MovieDetail({ params }: { params: Promise<{ id: st
     const poster = apiConfig.originalImage(movie.poster_path || movie.backdrop_path);
   
     return (
-      <main className="flex flex-col items-center gap-6 relative">
+      <main className="flex flex-col items-center gap-6 relative lg:py-20">
         {/* background image */}
         <div className="absolute top-4 right-4 md:top-10 2xl:top-20 2xl:right-96 z-10">
           <GoBackButton />
@@ -46,7 +46,7 @@ export default async function MovieDetail({ params }: { params: Promise<{ id: st
             </article>
 
             {/* info card */}
-            <article className="lg:w-1/2 max-h-[620px] container text-center md:text-start flex flex-col justify-center gap-6 relative">
+            <article className="lg:w-1/2 max-h-[1200px] container text-center md:text-start flex flex-col justify-center gap-6 relative">
               <p className="md:text-xl flex justify-center md:justify-start gap-9">
                 <span>★ {movie.vote_average.toFixed(1)}</span>
                 <span>-</span>
