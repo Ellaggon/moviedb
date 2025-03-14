@@ -5,6 +5,7 @@ import { tmdbApi } from "src/api/tmdbApi"
 import MovieCard from "../MovieCard"
 import { useTranslations } from "use-intl"
 import { Pagination } from "../Pagination"
+import { SkeletonMovies } from "./SkeletonMovies"
 
 type Movie = {
     id: number,
@@ -22,9 +23,12 @@ export const GenreMovies = ({ selectedGenres }: GenreMovieProps) => {
     const [listMovies, setListMovies] = useState<Movie[]>([])
     const [totalPage, setTotalPage] = useState(0)
     const [currentPage, setCurrentPage] = useState(0)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const getList = async () => {
+            setLoading(true)
+
             const params = {
                 page: currentPage || 1,
                 language: `${ t("lang") }`,
@@ -38,6 +42,8 @@ export const GenreMovies = ({ selectedGenres }: GenreMovieProps) => {
                 setCurrentPage(page)
             } catch (e) {
                 console.error("Error fetching list movies :", e)
+            } finally {
+                setLoading(false)
             }
         }
         getList()
@@ -52,9 +58,13 @@ export const GenreMovies = ({ selectedGenres }: GenreMovieProps) => {
         <section className="flex flex-col justify-center">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {
-                    listMovies.map((movie) => (
-                        <MovieCard key={movie.id} item={movie} />
-                    ))
+                    loading ? (
+                        Array(8).fill(0).map((_, index) => <SkeletonMovies key={index} />)
+                    ): (
+                        listMovies.map((movie) => (
+                            <MovieCard key={movie.id} item={movie} />
+                        ))
+                    )
                 }
             </div>
                 <Pagination totalPages={totalPage} category="categories" currentPage={currentPage} sendPage={handlePages}/>
