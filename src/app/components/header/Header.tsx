@@ -21,6 +21,7 @@ export default function Header() {
         { display: `${t("categories")}`, path: "/categories" },
         { display: `${t("popular")}`, path: "/popular" },
         { display: `${t("upcoming")}`, path: "/upcoming" },
+        { display: `${t("favorites")}`, path: "/favorites" },
     ];
 
     const active = headerNav.findIndex((e) => `/${t("lang")}${e.path}` === pathname);
@@ -63,7 +64,7 @@ export default function Header() {
                             {e.display}
                         </Link>
                     ))}
-                    <div className="lg:hidden">
+                    <div className="lg:hidden mt-3">
                         <LanguageToggle />
                     </div>
                     <div className="w-full h-16"></div>
