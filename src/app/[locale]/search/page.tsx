@@ -10,7 +10,7 @@ export default async function movieSearch({ searchParams }: SearchParams) {
     const currentPage = Number((await searchParams).page) || 1
 
     return (
-        <main className="w-100 relative">
+        <main className="w-100 relative flex-1">
             <div className="absolute top-4 right-4 md:top-10 2xl:right-96 2xl:top-20">
                 <GoBackButton />
             </div>
