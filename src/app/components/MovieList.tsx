@@ -44,10 +44,17 @@ type MoviesProps = {
 }
 
 export default async function MovieList({category, id}: MoviesProps) {
+    const t = await getTranslations("lang")
     const movies = await fetchMovies(category, id)
 
     return (
         <section>
+            <h2 className="text-xl md:text-3xl font-semibold md:font-bold mb-6"> 
+                { ((movies.length > 0) && (category === "similar")) && 
+                    t("similarMovies") 
+                }
+            </h2>
+            
             <div className="container mx-auto py-6">
                 <div className="overflow-x-auto">
                     <div className="flex gap-4">
