@@ -11,18 +11,18 @@ export default async function MovieDetail({ params }: { params: Promise<{ id: st
   const t = await getTranslations("lang");
   const movieId = (await params).id
 
-  let res;
+  let res
   try {
     res = await tmdbApi.detail(movieId.toString(), { language: t("lang") })
-    if (!res?.data) throw new Error("No movie data");
+    if (!res?.data) throw new Error("No movie data")
 
-    const movie = res?.data;
+    const movie = res?.data
     const category = movie.genres.map((el: {name: string}) => el.name).join(" - ")
     const company = movie.production_companies.map((el: {name: string}) => el.name)
     const country = movie.production_countries.map((el: {name: string}) => el.name)
 
-    const bg = apiConfig.originalImage(movie.backdrop_path || movie.poster_path);
-    const poster = apiConfig.originalImage(movie.poster_path || movie.backdrop_path);
+    const bg = apiConfig.originalImage(movie.backdrop_path || movie.poster_path)
+    const poster = apiConfig.originalImage(movie.poster_path || movie.backdrop_path)
   
     return (
       <main className="flex flex-col items-center gap-6 relative lg:py-20">
@@ -79,11 +79,10 @@ export default async function MovieDetail({ params }: { params: Promise<{ id: st
 
         {/* similar movies */}
         <section className="container p-2">
-          <h2 className="text-xl md:text-3xl font-semibold md:font-bold mb-6">{t("similarMovies")}</h2>
           <MovieList id={parseInt(movieId)} category="similar" />
         </section>
       </main>
-    );
+    )
 
   } catch (e) {
     console.error("Error fetching movie detail: ", e);
